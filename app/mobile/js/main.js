@@ -37,6 +37,7 @@ $(function () {
 
         app = service.application({
             id: window.location.href.replace('/mobile','/tv')
+            //id : 'rPqGyLKFwH'
         });
 
         app.connect({name: username}, function (err) {
@@ -46,12 +47,14 @@ $(function () {
         app.on('connect', function(){
             $('body').removeClass().addClass('connected');
             ui.castWindowTitle.text(service.device.name);
+            ui.sendButton.prop("disabled",false);
         });
 
         app.on('disconnect', function(){
             $('body').removeClass().addClass('disconnected');
             ui.castWindowTitle.text('Connect to a device');
             app.removeAllListeners();
+            ui.sendButton.prop("disabled",true);
         });
 
     };
@@ -81,7 +84,8 @@ $(function () {
             ui.castSettings.fadeToggle(200, 'swing');
         });
 
-        ui.castButtonRescan.on('click', function(){
+        ui.castButtonRescan.on('click', function(evt){
+            evt.stopPropagation();
             ms.search();
         });
 
@@ -96,6 +100,8 @@ $(function () {
                 ui.sendButton.trigger('click');
             }
         });
+
+        ui.sendButton.prop("disabled",true);
 
         ms.search();
     };

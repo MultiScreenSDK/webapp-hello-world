@@ -1,65 +1,5 @@
-*, *:before, *:after {
-    box-sizing: border-box;
-    margin : 0;
-    padding : 0;
-}
-
-*:not(input.field) {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-touch-callout: none;
-    user-select: none;
-}
-
-*:focus {outline:none;}
-
-
-.flexbox() {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-}
-
-.flexflow(@values) {
-    -webkit-flex-flow: @values;
-    -moz-flex-flow:  @values;
-    -ms-flex-flow:  @values;
-    flex-flow:  @values;
-}
-
-.flexalignitems(@values) {
-    -webkit-align-items: @values;
-    -moz-align-items:  @values;
-    -ms-align-items:  @values;
-    align-items:  @values;
-}
-
-.flexaligncontent(@values) {
-    -webkit-align-content: @values;
-    -moz-align-content:  @values;
-    -ms-align-content:  @values;
-    align-content:  @values;
-}
-
-.flexjustifycontent(@values) {
-    -webkit-justify-content: @values;
-    -moz-justify-content:  @values;
-    -ms-justify-content:  @values;
-    justify-content:  @values;
-}
-
-.flex(@values) {
-    -webkit-box-flex: @values;
-    -moz-box-flex:  @values;
-    -webkit-flex:  @values;
-    -ms-flex:  @values;
-    flex:  @values;
-}
-
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+@import "../../common/css/mixins";
 
 html, body {
     width : 100%;
@@ -76,64 +16,6 @@ h3{ font-size: 1.4em; }
 h4{ font-size: 1.3em; }
 h5{ font-size: 1.2em; }
 h6{ font-size: 1.1em; }
-
-/* Button */
-button {
-    display: inline-block;
-    position: relative;
-    padding: 1em;
-    border-radius: 2px;
-    font-size: 1em;
-    background-color: #fff;
-    color: #646464;
-    border:none;
-}
-
-input{
-    padding: 1em;
-    font-size: 1em;
-}
-
-/*
-.button > paper-ripple {
-    border-radius: 2px;
-    overflow: hidden;
-}
-*/
-
-button.narrow {
-    width: 60px;
-}
-
-button.grey {
-    background-color: #eee;
-}
-
-button.blue {
-    background-color: #4285f4;
-    color: #fff;
-}
-
-button.green {
-    background-color: #0f9d58;
-    color: #fff;
-}
-
-button.red {
-    background-color: #C82C3D;
-    color: #fff;
-}
-
-button.raised {
-    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 0.2s;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-}
-
-button.raised:active, button.raised:hover {
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    transition-delay: 0s;
-}
 
 header{
     .flexbox();
@@ -157,7 +39,7 @@ body{
     background-color: #DFDFDF;
     color: #646464;
     position: relative;
-    font: normal 12px RobotoDraft, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font: normal 12px Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     section, header{
         padding : 1em;
@@ -181,11 +63,13 @@ body{
             input{
                 width: 70%;
                 margin : 10px;
+                display: none;
             }
 
             button{
                 width: 70%;
                 margin : 10px;
+                display: none;
             }
 
         }
@@ -218,12 +102,13 @@ body{
             min-height: 50px;
             top: 10%;
             left: 10%;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+            box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.7);
             line-height: 32px;
-            border-radius: 2px;
+            border-radius: 5px;
             background-color: #fff;
             color: #646464;
             border:none;
+            overflow: hidden;
         }
 
         p{
@@ -265,6 +150,22 @@ body{
     }
 
     &.connected {
+
+        #wrapper{
+            section{
+                h3{
+                    display: none;
+                }
+                input{
+                    display: block;
+                }
+                button{
+                    display: block;
+                }
+            }
+        }
+
+
         #castSettings {
             header {
                 .iconConnected
@@ -289,6 +190,22 @@ body{
     }
 
     &.disconnected{
+
+
+        #wrapper{
+            section{
+                h3{
+                    display: block;
+                }
+                input{
+                    display: none;
+                }
+                button{
+                    display: none;
+                }
+            }
+        }
+
         #castSettings {
             header {
                 .iconDisconnected;

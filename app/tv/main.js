@@ -1,5 +1,13 @@
 $(function(){
 
+    /*
+     * Special Samsung TV Sauce
+     */
+    if(navigator.userAgent.search(/Maple/) > -1) {
+        var widgetAPI = new window.Common.API.Widget();
+        widgetAPI.sendReadyEvent();
+    }
+
     "use strict";
 
     var ms = window.multiscreen;
@@ -14,6 +22,7 @@ $(function(){
 
         app = service.application({
             id: window.location.href,
+            //id : 'rPqGyLKFwH',
             stopOnDisconnect : false,
             startOnConnect : false
         });

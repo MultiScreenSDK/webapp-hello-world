@@ -11,7 +11,7 @@
   "author": "Samsung Electronics",
   "private": true,
   "scripts": {
-    "start": "server.js"
+    "start": "node server.js"
   },
   "devDependencies": {
     "express": "^4.10.1"
