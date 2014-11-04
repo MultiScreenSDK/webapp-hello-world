@@ -38,6 +38,14 @@ $(function(){
             ui.author.text('~ Your TV');
         });
 
+        app.on('connect', function(client){
+            $('body').css('background-color', '#ff0000');
+        });
+
+        app.on('disconnect', function(client){
+            $('body').css('background-color', '#ccc');
+        });
+
     });
 
 });
