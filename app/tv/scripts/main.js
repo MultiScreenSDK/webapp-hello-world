@@ -39,11 +39,13 @@ $(function(){
         });
 
         app.on('connect', function(client){
-            $('body').css('background-color', '#ff0000');
+            ui.phrase.text('Eureka! ... Your connected.');
+            ui.author.text('~ Your TV');
         });
 
         app.on('disconnect', function(client){
-            $('body').css('background-color', '#ccc');
+            ui.phrase.text('Disconnected');
+            ui.author.text('~ Your TV');
         });
 
     });

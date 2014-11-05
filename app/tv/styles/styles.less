@@ -35,21 +35,22 @@ blockquote{
   font-size: 4em;
   font-weight: bold;
   quotes: "\201C""\201D""\2018""\2019";
-}
 
-blockquote:before {
-  color: #8ef46a;
-  content: open-quote;
-  font-size: 2em;
-  vertical-align: -.2em;
-  margin-right : 20px;
-}
-blockquote:after {
-  color: #8ef46a;
-  content: close-quote;
-  font-size: 2em;
-  vertical-align: -.2em;
-  margin-left : 20px;
+  &:before {
+    color: #8ef46a;
+    content: open-quote;
+    font-size: 2em;
+    vertical-align: -.2em;
+    margin-right : 20px;
+  }
+
+  &:after {
+    color: #8ef46a;
+    content: close-quote;
+    font-size: 2em;
+    vertical-align: -.2em;
+    margin-left : 20px;
+  }
 }
 
 sub{
@@ -57,4 +58,5 @@ sub{
   text-align: right;
   font-size: 1.5em;
   font-style: italic;
+  padding-right: 1em;
 }
