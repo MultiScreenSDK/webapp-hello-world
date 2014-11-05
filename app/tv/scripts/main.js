@@ -39,7 +39,7 @@ $(function(){
         });
 
         app.on('connect', function(client){
-            ui.phrase.text('Eureka! ... Your connected.');
+            ui.phrase.text("Eureka! ... You're connected.");
             ui.author.text('~ Your TV');
         });
 
