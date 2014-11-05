@@ -11,7 +11,8 @@
   "author": "Samsung Electronics",
   "private": true,
   "scripts": {
-    "start": "node_modules/.bin/gulp server"
+    "start": "node_modules/.bin/gulp server",
+    "build": "node_modules/.bin/gulp build"
   },
   "devDependencies": {
     "express": "^4.10.1",
