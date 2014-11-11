@@ -59,7 +59,7 @@ gulp.task('clean', function (cb) {
 
 gulp.task('server',['build'], function(){
     var app = express();
-    app.set('port', process.env.PORT || 3000);
+    app.set('port', process.env.PORT || 3001);
     app.use(express.static(path.join(__dirname, './dist')));
     app.listen(app.get('port'), function(){
         console.log('development server listening on port ' + app.get('port'));
