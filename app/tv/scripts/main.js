@@ -2,7 +2,6 @@ $(function(){
 
     "use strict";
 
-    var ms = window.multiscreen;
     var app;
 
     var ui = {
@@ -10,14 +9,9 @@ $(function(){
         author : $('sub')
     };
 
-    ms.local(function(err, service){
+    window.msf.local(function(err, service){
 
-        app = service.application({
-            id: window.location.href,
-            //id : 'rPqGyLKFwH',
-            stopOnDisconnect : false,
-            startOnConnect : false
-        });
+        app = service.application(window.location.href);
 
         app.connect({name: 'TV'}, function (err) {
             if(err) return console.error(err);
