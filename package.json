@@ -1,7 +1,7 @@
 {
   "name": "multiscreen-hello-world",
   "displayName": "Multiscreen Hello World",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Hello World example for multiscreen",
   "homepage": "",
   "repository": "",
@@ -16,9 +16,7 @@
   },
   "devDependencies": {
     "express": "^4.10.1",
-    "gulp-less": "^1.3.6",
-    "gulp": "^3.8.10",
-    "del": "^0.1.3"
+    "gulp": "^3.8.10"
   },
   "engine": "node >= 0.10.15"
 }
