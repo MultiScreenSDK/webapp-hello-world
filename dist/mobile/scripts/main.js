@@ -3,12 +3,11 @@ $(function () {
     "use strict";
 
     var username = navigator.userAgent.match(/(opera|chrome|safari|firefox|msie)/i)[0] + ' User';
-    var ms = window.multiscreen;
     var app;
 
     var ui = {
         castButton          : $('#castButton'),
-        castSettings         : $('#castSettings'),
+        castSettings        : $('#castSettings'),
         castWindowTitle     : $('#castSettings .title'),
         castWindowDeviceList: $('#castSettings .devices'),
         castButtonDisconnect: $('#castSettings button.disconnect'),
@@ -17,28 +16,14 @@ $(function () {
         sendButton          : $('#btnSend')
     };
 
-    ms.on('discover', function(services){
 
-        ui.castWindowDeviceList.empty();
-
-        if(services.length > 0){
-            $(services).each(function(index, service){
-                $('<li>').text(service.device.name).data('service',service).appendTo(ui.castWindowDeviceList);
-            });
-            $('body').removeClass().addClass('disconnected');
-            ui.castWindowTitle.text('Connect To A Device');
-        }else{
-            $('<li>').text('No devices found').appendTo(ui.castWindowDeviceList);
-        }
-    });
 
 
     var setService = function(service){
 
-        app = service.application({
-            id: window.location.href.replace('/mobile','/tv')
-            //id : 'rPqGyLKFwH'
-        });
+        var tvAppId = window.location.href.replace('/mobile','/tv');
+
+        app = service.application(tvAppId);
 
         app.connect({name: username}, function (err) {
             if(err) return console.error(err);
@@ -60,6 +45,25 @@ $(function () {
     };
 
     var init = function(){
+
+        var search = window.msf.search();
+
+        search.on('found', function(services){
+
+            ui.castWindowDeviceList.empty();
+
+            if(services.length > 0){
+                $(services).each(function(index, service){
+                    $('<li>').text(service.device.name).data('service',service).appendTo(ui.castWindowDeviceList);
+                });
+                $('body').removeClass().addClass('disconnected');
+                ui.castWindowTitle.text('Connect To A Device');
+            }else{
+                $('<li>').text('No devices found').appendTo(ui.castWindowDeviceList);
+            }
+        });
+
+        search.start();
 
         ui.castButton.on('click', function(){
             ui.castSettings.fadeToggle(200, 'swing');
@@ -86,7 +90,7 @@ $(function () {
 
         ui.castButtonRescan.on('click', function(evt){
             evt.stopPropagation();
-            ms.search();
+            search.start();
         });
 
         ui.sendButton.on('click', function(){
@@ -103,7 +107,6 @@ $(function () {
 
         ui.sendButton.prop("disabled",true);
 
-        ms.search();
     };
 
     init();
