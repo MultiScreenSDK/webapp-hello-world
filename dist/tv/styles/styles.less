@@ -1,4 +1,51 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);*/
+
+.flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flexflow(@values) {
+  -webkit-flex-flow: @values;
+  -moz-flex-flow:  @values;
+  -ms-flex-flow:  @values;
+  flex-flow:  @values;
+}
+
+.flexalignitems(@values) {
+  -webkit-align-items: @values;
+  -moz-align-items:  @values;
+  -ms-align-items:  @values;
+  align-items:  @values;
+}
+
+.flexaligncontent(@values) {
+  -webkit-align-content: @values;
+  -moz-align-content:  @values;
+  -ms-align-content:  @values;
+  align-content:  @values;
+}
+
+.flexjustifycontent(@values) {
+  -webkit-justify-content: @values;
+  -moz-justify-content:  @values;
+  -ms-justify-content:  @values;
+  justify-content:  @values;
+}
+
+.flex(@values) {
+  -webkit-box-flex: @values;
+  -moz-box-flex:  @values;
+  -webkit-flex:  @values;
+  -ms-flex:  @values;
+  flex:  @values;
+}
+
+
+
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -21,10 +68,10 @@ html, body {
 
 body{
   background : #4285f4;
-  display : flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
+  .flexbox();
+  .flexflow(column wrap);
+  .flexalignitems(center);
+  .flexjustifycontent(center);
   font: normal 14px Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color : #fff;
   padding : 3em;
