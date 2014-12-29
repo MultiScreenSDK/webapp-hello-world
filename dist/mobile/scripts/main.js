@@ -21,9 +21,11 @@ $(function () {
 
     var setService = function(service){
 
-        var tvAppId = window.location.href.replace('/mobile','/tv');
+        // Since the mobile web app and tv app are hosted from the same place
+        // We will use a little javascript to determine the tv app url
+        var tvAppUrl = window.location.href.replace('/mobile','/tv');
 
-        app = service.application(tvAppId);
+        app = service.application(tvAppUrl, 'com.samsung.multiscreen.helloworld');
 
         app.connect({name: username}, function (err) {
             if(err) return console.error(err);
