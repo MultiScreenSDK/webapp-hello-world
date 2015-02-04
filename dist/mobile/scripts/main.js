@@ -2,6 +2,8 @@ $(function () {
 
     "use strict";
 
+    window.msf.logger.level = 'debug';
+
     var username = navigator.userAgent.match(/(opera|chrome|safari|firefox|msie)/i)[0] + ' User';
     var app;
 
@@ -15,9 +17,6 @@ $(function () {
         phrase              : $('#txtName'),
         sendButton          : $('#btnSend')
     };
-
-
-
 
     var setService = function(service){
 
