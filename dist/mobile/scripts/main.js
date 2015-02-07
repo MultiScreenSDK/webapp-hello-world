@@ -2,6 +2,8 @@ $(function () {
 
     "use strict";
 
+    window.msf.logger.level = 'silly';
+
     var username = navigator.userAgent.match(/(opera|chrome|safari|firefox|msie)/i)[0] + ' User';
     var app;
 
@@ -23,7 +25,7 @@ $(function () {
         var tvAppUrl = window.location.href.replace('/mobile','/tv');
 
         app = service.application(tvAppUrl, 'com.samsung.multiscreen.helloworld');
-        app.setConnectionTimeout(5000);
+        app.connectionTimeout = 5000;
 
         app.connect({name: username}, function (err) {
             if(err) return console.error(err);
