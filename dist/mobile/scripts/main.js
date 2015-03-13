@@ -25,7 +25,7 @@ $(function () {
         var tvAppUrl = window.location.href.replace('/mobile','/tv');
 
         app = service.application(tvAppUrl, 'com.samsung.multiscreen.helloworld');
-        app.connectionTimeout = 5000;
+        //app.connectionTimeout = 5000;
 
         app.connect({name: username}, function (err) {
             if(err) return console.error(err);
@@ -48,6 +48,7 @@ $(function () {
 
     var init = function(){
 
+        
         var search = window.msf.search();
 
         search.on('found', function(services){
@@ -66,6 +67,35 @@ $(function () {
         });
 
         search.start();
+        
+
+
+       	/*
+        window.msf.remote('http://5196e3fe.ngrok.com/api/v2/', function(err, service){
+
+            ui.castWindowDeviceList.empty();
+            var services = [];
+
+            if(err) {
+                console.error(err);
+            }else{
+
+                services.push(service);
+
+                if(services.length > 0){
+                    $(services).each(function(index, service){
+                        $('<li>').text(service.device.name).data('service',service).appendTo(ui.castWindowDeviceList);
+                    });
+                    $('body').removeClass().addClass('disconnected');
+                    ui.castWindowTitle.text('Connect To A Device');
+                }else{
+                    $('<li>').text('No devices found').appendTo(ui.castWindowDeviceList);
+                }
+            }
+        });
+		*/
+
+
 
         ui.castButton.on('click', function(){
             ui.castSettings.fadeToggle(200, 'swing');
